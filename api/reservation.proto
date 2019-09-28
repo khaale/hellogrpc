@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package hellogrpc;
+
+service Reservation {
+  rpc Reserve (ReservationRequest) returns (ReservationReply) {}
+}
+
+message ReservationRequest {
+  int32 quantity = 1;
+}
+
+message ReservationReply {
+  string reservationId = 1;
+}

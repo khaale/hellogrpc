@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package hellogrpc;
+
+import "google/protobuf/any.proto";
+
+message Event {
+  string              operationId = 1;
+  string              eventType   = 2;
+  google.protobuf.Any payload     = 3;
+}
+
+message CompensationRequest {
+  string operationId = 1;
+}

@@ -1,0 +1,28 @@
+@startuml components
+
+actor "User" as usr
+
+component "Gateway Service" as gw <<system service>>
+interface "External API" as gwApi <<REST>>
+
+component "Contract Service" as ctr <<business service>>
+interface "Contract API" as ctrApi <<gRPC>>
+
+component "Reservation Service" as rsv <<business service>>
+interface "Reservation API" as rsvApi <<gRPC>>
+
+component "Saga Service" as sg <<system service>>
+interface "Saga API" as sgApi <<gRPC>>
+
+usr ..> gwApi
+gwApi -- gw
+gw ..> ctrApi
+ctrApi -- ctr
+ctr .> rsvApi
+rsvApi - rsv
+
+ctr ..> sgApi
+rsv ..> sgApi
+sgApi -- sg
+
+@enduml
